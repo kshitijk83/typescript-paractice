@@ -1,6 +1,0 @@
-**/node_modules
-**/out
-**/lib
-.vscode
-lerna-debug.log
-**/tempCodeRunnerFile.ts
