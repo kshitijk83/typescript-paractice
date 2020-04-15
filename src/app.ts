@@ -1,28 +1,53 @@
-class Department{
-    private emp: string[]=[];
-    constructor(private readonly id: string, public name: String){
+interface Named{
+    readonly name: string;
+
+}
+
+interface Greetable extends Named{
+    greet(phrase: string): void;
+}
+
+// type add=(n1: number, n2: number)=>number
+interface params{
+    n1:number;
+    n2:number;
+}
+function add(config: params):void{
+    
+}
+
+class Person implements Greetable{
+    constructor(public name: string, public id: string){
 
     }
 
-    describe(this: Department){
-        console.log("Department: "+this.name)
+    greet(phrase: string){
+        // sdfs
     }
-    addEmp(emp: string){
-        this.emp.push(emp)
-    }
-    printEmp(){
-        console.log(this.emp)
+}
+let x = new Person("asdf", "asd");
+
+interface cat{
+    type: 'cat';
+    run: number;
+}
+
+interface fish{
+    type: 'fish';
+    float: number;
+}
+type Animal = cat|fish;
+function blah(animal:Animal){
+    switch (animal.type) {
+        case 'cat':
+            console.log(animal.run)
+            break;
+        case 'fish':
+            console.log(animal.float)
+        default:
+            break;
     }
 }
 
-class IT extends Department{
-    constructor(id: string, public reports:string[]){
-        super(id, 'IT')
-    }
-
-    addRep(rep: string){
-        this.reports.push(rep)
-    }
-}
-
-let x=new IT("sad",["asdf"])
+let userInput = document.getElementById("hehe") as HTMLInputElement;
+userInput.value="asdf"
