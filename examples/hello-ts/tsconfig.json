@@ -1,0 +1,9 @@
+{
+    "include": ["src"],
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ES2017",
+        "outDir": "lib"
+    },
+    
+}
