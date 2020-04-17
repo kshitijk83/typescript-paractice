@@ -1,4 +1,4 @@
-import { HasPhoneNumber, HasEmail } from "./1-basics";
+import { HasEmail, HasPhoneNumber } from "./1-basics";
 
 // == CLASSES == //
 
@@ -6,7 +6,6 @@ import { HasPhoneNumber, HasEmail } from "./1-basics";
  * (1) Classes work similarly to what you're used to seeing in JS
  * -   They can "implement" interfaces
  */
-
 // export class Contact implements HasEmail {
 //   email: string;
 //   name: string;
@@ -34,47 +33,52 @@ import { HasPhoneNumber, HasEmail } from "./1-basics";
 //     // nothing needed
 //   }
 // }
+class ParamPropContact implements HasEmail{
+    constructor(public name: string, public email: string="aas"){
+
+    }
+}
 
 /**
  * (4) Class fields can have initializers (defaults)
  */
-// class OtherContact implements HasEmail, HasPhoneNumber {
-//   protected age: number = 0;
-//   // private password: string;
-//   constructor(public name: string, public email: string, public phone: number) {
-//     // () password must either be initialized like this, or have a default value
-//     // this.password = Math.round(Math.random() * 1e14).toString(32);
-//   }
-// }
+class OtherContact implements HasEmail, HasPhoneNumber {
+  protected age: number = 0;
+  private password: string;
+  constructor(public name: string, public email: string, public phone: number) {
+    // () password must either be initialized like this, or have a default value
+    this.password = Math.round(Math.random() * 1e14).toString(32);
+  }
+}
 
 /**
  * (5) TypeScript even allows for abstract classes, which have a partial implementation
  */
 
-// abstract class AbstractContact implements HasEmail, HasPhoneNumber {
-//   public abstract phone: number; // must be implemented by non-abstract subclasses
+abstract class AbstractContact implements HasEmail, HasPhoneNumber {
+  public abstract phone: number; // must be implemented by non-abstract subclasses
 
-//   constructor(
-//     public name: string,
-//     public email: string // must be public to satisfy HasEmail
-//   ) {}
+  constructor(
+    public name: string,
+    public email: string // must be public to satisfy HasEmail
+  ) {}
 
-//   abstract sendEmail(): void; // must be implemented by non-abstract subclasses
-// }
+  abstract sendEmail(): void; // must be implemented by non-abstract subclasses
+}
 
 /**
  * (6) implementors must "fill in" any abstract methods or properties
  */
-// class ConcreteContact extends AbstractContact {
-//   constructor(
-//     public phone: number, // must happen before non property-parameter arguments
-//     name: string,
-//     email: string
-//   ) {
-//     super(name, email);
-//   }
-//   sendEmail() {
-//     // mandatory!
-//     console.log("sending an email");
-//   }
-// }
+class ConcreteContact extends AbstractContact {
+  constructor(
+    public phone: number, // must happen before non property-parameter arguments
+    name: string,
+    email: string
+  ) {
+    super(name, email);
+  }
+  sendEmail() {
+    // mandatory!
+    console.log("sending an email");
+  }
+}
