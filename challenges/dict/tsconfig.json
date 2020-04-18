@@ -1,6 +1,12 @@
 {
   "compilerOptions": {
-    "strict": true
+    "allowJs": true,
+    "checkJs": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true
   },
   "include": ["src"]
 }
