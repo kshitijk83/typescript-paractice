@@ -9,7 +9,7 @@ const TodoList: React.FC=()=>{
     const {state} = useTodo()
     const list =state[0]?(state.map(todo=><li key ={todo.id}>{todo.text}</li>)):"no items found"
     return(
-        <ul>
+        <ul data-testid="list">
             {list}
         </ul>
     )

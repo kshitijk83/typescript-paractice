@@ -8,7 +8,18 @@ module.exports = {
     transform: {
       "^.+\\.tsx?$": "ts-jest"
     },
+    
+    moduleDirectories:[
+      'node_modules',
+      'utils',
+      __dirname
+    ],
+
+    moduleNameMapper: {
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
   
+    testEnvironment: 'jest-environment-jsdom-fifteen',
     // Runs special logic, such as cleaning up components
     // when using React Testing Library and adds special
     // extended assertions to Jest

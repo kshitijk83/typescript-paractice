@@ -13,7 +13,7 @@ const NewTodo: React.FC=()=>{
     }
     return(
         <form onSubmit={submitHandler}>
-            <div className="">
+            <div>
                 <label htmlFor="todo-text">Todo Text</label>
                 <input ref={textInputRef} type="text" id="todo-text"/>
             </div>

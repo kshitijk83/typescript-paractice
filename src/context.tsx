@@ -11,7 +11,7 @@ interface Action{
 
 type x=[todo[], Dispatch<Action>]
 
-const TodoContext = React.createContext<x>([[], ()=>{}])
+const TodoContext = React.createContext<x>([[],()=>{}])
 
 type countReducer= (initState: todo[], action: Action)=>todo[]
 function countReducer(initState: todo[], action: Action){
@@ -34,8 +34,8 @@ function countReducer(initState: todo[], action: Action){
 
 const TodoProvider: React.FC=(props)=>{
     const [state, dispatch] = useReducer(countReducer, [])
-    // const value = React.useMemo(()=>[state, dispatch], [state, dispatch])
-    return <TodoContext.Provider value={[state, dispatch]} {...props} />
+    const value: x = React.useMemo(()=>[state, dispatch], [state, dispatch])
+    return <TodoContext.Provider value={value} {...props} />
 }
 
 const useTodo=()=>{
